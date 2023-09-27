@@ -7,26 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import mx.itesm.aplicacion_comedor.R
-import mx.itesm.aplicacion_comedor.viewmodel.ReporteVM
+import mx.itesm.aplicacion_comedor.viewmodel.ReportesVM
 
-class ReporteFrag : Fragment() {
+class ReportesFrag : Fragment() {
 
     companion object {
-        fun newInstance() = ReporteFrag()
+        fun newInstance() = ReportesFrag()
     }
 
-    private lateinit var viewModel: ReporteVM
+    private lateinit var viewModel: ReportesVM
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_reporte, container, false)
+        return inflater.inflate(R.layout.fragment_reportes, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ReporteVM::class.java)
+        viewModel = ViewModelProvider(this).get(ReportesVM::class.java)
         // TODO: Use the ViewModel
     }
 
