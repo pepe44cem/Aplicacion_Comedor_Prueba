@@ -8,6 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import mx.itesm.aplicacion_comedor.R
 import mx.itesm.aplicacion_comedor.viewmodel.RegistroPersonaExitosoVM
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
+
 
 class RegistroPersonaExitosoFrag : Fragment() {
 
@@ -21,13 +27,73 @@ class RegistroPersonaExitosoFrag : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_registro_persona_exitoso, container, false)
+        val view = inflater.inflate(R.layout.fragment_registro_persona_exitoso, container, false)
+
+        val btnSMS = view.findViewById<Button>(R.id.btnSMS)
+        val btnCorreo = view.findViewById<Button>(R.id.btnCorreo)
+
+        btnSMS.setOnClickListener {
+            mostrarDialogo("SMS")
+        }
+
+        btnCorreo.setOnClickListener {
+            mostrarDialogo("Correo")
+        }
+
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(RegistroPersonaExitosoVM::class.java)
         // TODO: Use the ViewModel
+    }
+
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.fragment_registro_persona_exitoso) // Reemplaza "tu_layout" con el nombre de tu diseño
+//
+//        val btnSMS = findViewById<Button>(R.id.btnSMS)
+//        val btnCorreo = findViewById<Button>(R.id.btnCorreo)
+//
+//        btnSMS.setOnClickListener {
+//            mostrarDialogo("SMS")
+//        }
+//
+//        btnCorreo.setOnClickListener {
+//            mostrarDialogo("Correo")
+//        }
+//    }
+
+    private fun mostrarDialogo(opcion: String) {
+        val builder = AlertDialog.Builder(requireContext())
+        val inflater = LayoutInflater.from(requireContext())
+        val dialogView = inflater.inflate(R.layout.fragment_ingreso_datos, null)
+
+        val editTextInput = dialogView.findViewById<EditText>(R.id.editTextInput)
+        val btnAceptar = dialogView.findViewById<Button>(R.id.btnAceptar)
+        val btnCancelar = dialogView.findViewById<Button>(R.id.btnCancelar)
+
+        builder.setView(dialogView)
+        builder.setTitle("Enviar $opcion")
+
+        val dialog = builder.create()
+
+        btnAceptar.setOnClickListener {
+            val textoIngresado = editTextInput.text.toString()
+            if (opcion == "SMS") {
+                // Lógica para enviar un SMS
+            } else if (opcion == "Correo") {
+                // Lógica para enviar un correo electrónico
+            }
+            dialog.dismiss()
+        }
+
+        btnCancelar.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
 }

@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "mx.itesm.aplicacion_comedor"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "mx.itesm.aplicacion_comedor"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
