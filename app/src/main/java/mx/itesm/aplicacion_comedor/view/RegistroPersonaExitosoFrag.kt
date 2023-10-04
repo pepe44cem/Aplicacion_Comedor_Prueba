@@ -9,10 +9,14 @@ import android.view.ViewGroup
 import mx.itesm.aplicacion_comedor.R
 import mx.itesm.aplicacion_comedor.viewmodel.RegistroPersonaExitosoVM
 import android.app.AlertDialog
+import android.content.ActivityNotFoundException
 import android.content.DialogInterface
+import android.content.Intent
+import android.net.Uri
 import android.telephony.SmsManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -84,8 +88,32 @@ class RegistroPersonaExitosoFrag : Fragment() {
                     println("El mensaje no pudo ser enviado")
                 }
             } else if (opcion == "Correo") {
-                val textoIngresado = editTextInput.text.toString()
+                val email = editTextInput.text.toString()
+                println("--$email--")
+                val subject = "Código para comedor DIF"
+                val message = "Con el siguiente código podrás registrar tu comida en la siguiente visita: Prueba"
+
+                val intent = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+                    putExtra(Intent.EXTRA_SUBJECT, subject)
+                    putExtra(Intent.EXTRA_TEXT, message)
+                }
+
+                try {
+                    startActivity(Intent.createChooser(intent, "Enviar correo electrónico"))
+                    println("---El correo ha sido enviado---")
+                } catch (ex: ActivityNotFoundException) {
+                    // Manejar el caso en el que no haya actividad de correo electrónico disponible
+                    println("---No se encontró una actividad de correo electrónico---")
+                    Toast.makeText(
+                        requireContext(),
+                        "No se encontró una actividad de correo electrónico. Por favor, configure una.",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
+
             dialog.dismiss()
         }
 
