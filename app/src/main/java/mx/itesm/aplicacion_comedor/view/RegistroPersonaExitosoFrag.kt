@@ -10,6 +10,7 @@ import mx.itesm.aplicacion_comedor.R
 import mx.itesm.aplicacion_comedor.viewmodel.RegistroPersonaExitosoVM
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.telephony.SmsManager
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -49,22 +50,6 @@ class RegistroPersonaExitosoFrag : Fragment() {
         // TODO: Use the ViewModel
     }
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.fragment_registro_persona_exitoso) // Reemplaza "tu_layout" con el nombre de tu diseño
-//
-//        val btnSMS = findViewById<Button>(R.id.btnSMS)
-//        val btnCorreo = findViewById<Button>(R.id.btnCorreo)
-//
-//        btnSMS.setOnClickListener {
-//            mostrarDialogo("SMS")
-//        }
-//
-//        btnCorreo.setOnClickListener {
-//            mostrarDialogo("Correo")
-//        }
-//    }
-
     private fun mostrarDialogo(opcion: String) {
         val builder = AlertDialog.Builder(requireContext())
         val inflater = LayoutInflater.from(requireContext())
@@ -80,11 +65,26 @@ class RegistroPersonaExitosoFrag : Fragment() {
         val dialog = builder.create()
 
         btnAceptar.setOnClickListener {
-            val textoIngresado = editTextInput.text.toString()
             if (opcion == "SMS") {
-                // Lógica para enviar un SMS
+                val textoIngresado = editTextInput.text.toString()
+                println("-$textoIngresado-")
+                if (textoIngresado != null){
+                    val mensaje = " Prueba " //Codigo /n Guarda este código para registrar tu comida en cualquiera de nuestros comedores
+                    try {
+                        val smsManager = SmsManager.getDefault()
+                        smsManager.sendTextMessage(textoIngresado, null, mensaje, null, null)
+                        // SMS enviado exitosamente
+                        println("--El mensaje ha sido enviado--")
+                    } catch (e: Exception) {
+                        // Maneja cualquier error aquí
+                        println("--El mensaje no ha sido enviado por parte de la api: ${e.message}--")
+                    }
+
+                }else{
+                    println("El mensaje no pudo ser enviado")
+                }
             } else if (opcion == "Correo") {
-                // Lógica para enviar un correo electrónico
+                val textoIngresado = editTextInput.text.toString()
             }
             dialog.dismiss()
         }
