@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navegacion"
-    app:startDestination="@id/registroPersonaExitosoFrag">
+            
+    app:startDestination="@id/logInFrag">
 
     <fragment
         android:id="@+id/logInFrag"
@@ -95,7 +96,22 @@
         tools:layout="@layout/fragment_reportes" />
     <fragment
         android:id="@+id/estadisticaFrag"
-        android:name="mx.itesm.aplicacion_comedor.view.EstadisticaFrag"
+        android:name="mx.itesm.aplicacion_comedor.view.EstadisticasFrag"
         android:label="fragment_estadistica"
         tools:layout="@layout/fragment_estadistica" />
+    <fragment
+        android:id="@+id/datosHoyFrag"
+        android:name="mx.itesm.aplicacion_comedor.view.DatosHoyFrag"
+        android:label="fragment_datos_hoy"
+        tools:layout="@layout/fragment_datos_hoy" />
+    <fragment
+        android:id="@+id/graficasFragment"
+        android:name="mx.itesm.aplicacion_comedor.view.GraficasFrag"
+        android:label="fragment_graficas"
+        tools:layout="@layout/fragment_graficas" />
+    <fragment
+        android:id="@+id/comentariosFrag"
+        android:name="mx.itesm.aplicacion_comedor.view.ComentariosFrag"
+        android:label="fragment_comentarios"
+        tools:layout="@layout/fragment_comentarios" />
 </navigation>
