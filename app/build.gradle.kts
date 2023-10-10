@@ -1,11 +1,12 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
     namespace = "mx.itesm.aplicacion_comedor"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "mx.itesm.aplicacion_comedor"
@@ -96,6 +97,9 @@ dependencies {
 
     // Fragmentos
     implementation("androidx.fragment:fragment-ktx:1.6.1")
+
+    // Lector QR
+    implementation("com.journeyapps:zxing-android-embedded:4.1.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

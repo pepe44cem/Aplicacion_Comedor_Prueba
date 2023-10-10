@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import mx.itesm.aplicacion_comedor.R
+import mx.itesm.aplicacion_comedor.databinding.FragmentLogInBinding
 import mx.itesm.aplicacion_comedor.viewmodel.LogInVM
 
 class LogInFrag : Fragment() {
@@ -17,11 +19,26 @@ class LogInFrag : Fragment() {
 
     private lateinit var viewModel: LogInVM
 
+    private lateinit var binding: FragmentLogInBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_log_in, container, false)
+        //return inflater.inflate(R.layout.fragment_log_in, container, false
+        binding = FragmentLogInBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        registarEventos()
+    }
+
+    private fun registarEventos() {
+        binding.btnLogIn.setOnClickListener {
+            val accion = LogInFragDirections.actionLogInFragToMenuFrag()
+            findNavController().navigate(accion)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

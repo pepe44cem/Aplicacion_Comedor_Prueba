@@ -10,9 +10,9 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,14 +43,14 @@
             android:text="Reportes" />
 
         <Button
-            android:id="@+id/btnRegistrarEmpleados"
+            android:id="@+id/btnRegistrarVoluntarios"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Registrar voluntarios" />
 
         <Button
-            android:id="@+id/btnRegistrarEmpleados2"
+            android:id="@+id/btnEstadisticas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

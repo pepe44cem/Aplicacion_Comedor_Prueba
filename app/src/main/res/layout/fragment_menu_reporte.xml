@@ -43,7 +43,7 @@
             android:text="Reportes" />
 
         <Button
-            android:id="@+id/btnRegistrarEmpleados"
+            android:id="@+id/btnRegistrarVoluntarios"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
