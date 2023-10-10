@@ -13,6 +13,7 @@ import com.google.zxing.integration.android.IntentIntegrator
 import mx.itesm.aplicacion_comedor.R
 import mx.itesm.aplicacion_comedor.databinding.FragmentRegistroComidaBinding
 import mx.itesm.aplicacion_comedor.viewmodel.RegistroComidaVM
+import androidx.navigation.fragment.findNavController
 
 class RegistroComidaFrag : Fragment(){
 
@@ -21,9 +22,16 @@ class RegistroComidaFrag : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentRegistroComidaBinding.inflate(layoutInflater)
-        return binding.root
-
         registrarObservadores()
+        registrarEventos()
+        return binding.root
+    }
+
+    private fun registrarEventos() {
+        binding.btnNuevaPersona.setOnClickListener {
+            val accion = RegistroComidaFragDirections.actionRegistroComidaFragToRegistroPersonaFrag()
+            findNavController().navigate(accion)
+        }
     }
 
     private fun registrarObservadores() {
