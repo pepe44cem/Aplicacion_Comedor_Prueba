@@ -12,12 +12,16 @@ import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.telephony.SmsManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import android.Manifest
 
 
 class RegistroPersonaExitosoFrag : Fragment() {
@@ -54,6 +58,42 @@ class RegistroPersonaExitosoFrag : Fragment() {
         // TODO: Use the ViewModel
     }
 
+    private val PERMISSIONS_REQUEST_SEND_SMS = 1
+
+    private fun enviarSMS(numero: String) {
+        val mensaje = " Prueba " //Codigo /n Guarda este código para registrar tu comida en cualquiera de nuestros comedores
+        try {
+            val smsManager = SmsManager.getDefault()
+            smsManager.sendTextMessage(numero, null, mensaje, null, null)
+            // SMS enviado exitosamente
+            println("--$numero--")
+            println("--El mensaje ha sido enviado--")
+        } catch (e: Exception) {
+            // Maneja cualquier error aquí
+            println("--El mensaje no ha sido enviado por parte de la api: ${e.message}--")
+        }
+    }
+
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            PERMISSIONS_REQUEST_SEND_SMS -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permiso concedido
+                    // Si tienes el número al que enviarlo en este punto, podrías llamar a enviarSMS()
+                    // Por ejemplo: enviarSMS(numero)
+                    Toast.makeText(requireContext(), "Permiso para enviar SMS concedido", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Permiso denegado
+                    Toast.makeText(requireContext(), "Permiso para enviar SMS denegado", Toast.LENGTH_SHORT).show()
+                }
+            }
+            // Puedes agregar más códigos de solicitud de permiso si los necesitas en el futuro
+        }
+    }
+
+
     private fun mostrarDialogo(opcion: String) {
         val builder = AlertDialog.Builder(requireContext())
         val inflater = LayoutInflater.from(requireContext())
@@ -70,24 +110,21 @@ class RegistroPersonaExitosoFrag : Fragment() {
 
         btnAceptar.setOnClickListener {
             if (opcion == "SMS") {
-                val textoIngresado = editTextInput.text.toString()
-                println("-$textoIngresado-")
-                if (textoIngresado != null){
-                    val mensaje = " Prueba " //Codigo /n Guarda este código para registrar tu comida en cualquiera de nuestros comedores
-                    try {
-                        val smsManager = SmsManager.getDefault()
-                        smsManager.sendTextMessage(textoIngresado, null, mensaje, null, null)
-                        // SMS enviado exitosamente
-                        println("--El mensaje ha sido enviado--")
-                    } catch (e: Exception) {
-                        // Maneja cualquier error aquí
-                        println("--El mensaje no ha sido enviado por parte de la api: ${e.message}--")
-                    }
-
-                }else{
-                    println("El mensaje no pudo ser enviado")
+                if (ContextCompat.checkSelfPermission(
+                        requireContext(),
+                        Manifest.permission.SEND_SMS
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    ActivityCompat.requestPermissions(
+                        requireActivity(),
+                        arrayOf(Manifest.permission.SEND_SMS),
+                        PERMISSIONS_REQUEST_SEND_SMS
+                    )
+                } else {
+                    enviarSMS(editTextInput.text.toString())
                 }
-            } else if (opcion == "Correo") {
+            }
+            else if (opcion == "Correo") {
                 val email = editTextInput.text.toString()
                 println("--$email--")
                 val subject = "Código para comedor DIF"
