@@ -2,6 +2,18 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
+    kotlin("kapt")
+    id("com.google.devtools.ksp") version "1.10.0"
+}
+
+plugins {
+    kotlin("jvm") version "1.9.10" apply false
+}
+
+buildscript {
+    dependencies {
+        classpath(kotlin("gradle-plugin", version = "1.9.10"))
+    }
 }
 
 android {
@@ -52,9 +64,9 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
     // To use Kotlin annotation processing tool (kapt)
-    //kapt("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
     // To use Kotlin Symbol Processing (KSP)
-    //ksp("androidx.room:room-compiler:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
 
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
