@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import mx.itesm.aplicacion_comedor.model.bd_global.Llamadas
 import mx.itesm.aplicacion_comedor.model.bd_global.Retro
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdAsistencia
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.idvoluntario
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.nuevoVoluntario
 import mx.itesm.aplicacion_comedor.model.others.QR
@@ -28,7 +29,7 @@ class RegistroEmpleadoVM : ViewModel() {
         val usuario = nuevoVoluntario(nombre, apellido, curp, sexo, fecha)
         val call = descargaAPI.agregarVoluntario(usuario)
 
-        call.enqueue(object: Callback<idvoluntario>{
+        call.enqueue(object: Callback<IdAsistencia>{
             override fun onResponse(call: Call<idvoluntario>, response: Response<idvoluntario>) {
                 if(response.isSuccessful){
                     id.value = response.body()?.idvoluntario
