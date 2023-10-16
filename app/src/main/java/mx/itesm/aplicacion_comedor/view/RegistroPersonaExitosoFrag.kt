@@ -18,6 +18,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
+import mx.itesm.aplicacion_comedor.databinding.FragmentRegistroComidaExitosoBinding
+import mx.itesm.aplicacion_comedor.databinding.FragmentRegistroPersonaBinding
+import mx.itesm.aplicacion_comedor.databinding.FragmentRegistroPersonaExitosoBinding
 
 
 class RegistroPersonaExitosoFrag : Fragment() {
@@ -26,16 +32,19 @@ class RegistroPersonaExitosoFrag : Fragment() {
         fun newInstance() = RegistroPersonaExitosoFrag()
     }
 
-    private lateinit var viewModel: RegistroPersonaExitosoVM
+    private val viewModel: RegistroPersonaExitosoVM by viewModels()
+    private lateinit var binding : FragmentRegistroPersonaExitosoBinding
+    val args: RegistroPersonaExitosoFragArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_registro_persona_exitoso, container, false)
+        //val view = inflater.inflate(R.layout.fragment_registro_persona_exitoso, container, false)
+        binding = FragmentRegistroPersonaExitosoBinding.inflate(layoutInflater)
 
-        val btnSMS = view.findViewById<Button>(R.id.btnSMS)
-        val btnCorreo = view.findViewById<Button>(R.id.btnCorreo)
+        val btnSMS = binding.btnSMS
+        val btnCorreo = binding.btnCorreo
 
         btnSMS.setOnClickListener {
             mostrarDialogo("SMS")
@@ -44,14 +53,20 @@ class RegistroPersonaExitosoFrag : Fragment() {
         btnCorreo.setOnClickListener {
             mostrarDialogo("Correo")
         }
+        registrarObservadores()
+        //registrarEventos()
 
-        return view
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RegistroPersonaExitosoVM::class.java)
-        // TODO: Use the ViewModel
+
+    /*private fun registrarEventos() {
+    }*/
+
+    private fun registrarObservadores() {
+        viewModel.bit.observe(viewLifecycleOwner, Observer { bit ->
+            binding.imgQR.setImageBitmap(bit)
+        })
     }
 
     private fun mostrarDialogo(opcion: String) {
@@ -124,4 +139,9 @@ class RegistroPersonaExitosoFrag : Fragment() {
         dialog.show()
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.crearQR(args.codigo)
+        binding.tvCodigo.text = args.codigo.toString()
+    }
 }
