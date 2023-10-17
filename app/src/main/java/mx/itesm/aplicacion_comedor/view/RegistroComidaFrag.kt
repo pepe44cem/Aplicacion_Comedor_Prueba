@@ -36,7 +36,7 @@ class RegistroComidaFrag : Fragment() {
     /*val prefs = activity?.getSharedPreferences("datos", AppCompatActivity.MODE_PRIVATE)
     val idComedor = prefs?.getInt("idComedor", 0)*/
 
-    val accion = RegistroComidaFragDirections.actionRegistroComidaFragToRegistroComidaExitosoFrag()
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentRegistroComidaBinding.inflate(layoutInflater)
@@ -110,6 +110,7 @@ class RegistroComidaFrag : Fragment() {
     private fun registrarObservadores() {
         viewModel.id.observe(viewLifecycleOwner, Observer {id ->
             if (id != null){
+                val accion = RegistroComidaFragDirections.actionRegistroComidaFragToRegistroComidaExitosoFrag(id)
                 findNavController().navigate(accion)
             }
         })
