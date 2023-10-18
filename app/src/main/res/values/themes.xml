@@ -6,4 +6,5 @@
     </style>
 
     <style name="Theme.Aplicacion_Comedor" parent="Base.Theme.Aplicacion_Comedor" />
+
 </resources>

@@ -1,6 +1,9 @@
 package mx.itesm.aplicacion_comedor.model.bd_global
 
 
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.ComedorIdRequest
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.DatosComidasHoy
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.VoluntariosAsistentesHoy
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Asistencia
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Condicion
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Condiciones
@@ -30,6 +33,15 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 
 interface Llamadas {
+
+    @Headers("Content-Type: application/json")
+    @POST("/datosHoy")
+    fun obtenerDatosComidasHoy(@Body comedor: ComedorIdRequest): Call<DatosComidasHoy>
+
+    @Headers("Content-Type: application/json")
+    @POST("/cantidadVoluntariosHoy")
+    fun obtenerCantidadVoluntariosHoy(@Body comedor: ComedorIdRequest): Call<VoluntariosAsistentesHoy>
+
     @Headers("Content-Type: application/json")
     @POST("/userPassword")
     fun autenticacionComedor(@Body credenciales: UsuarioContrasena): Call<IdComedor>
