@@ -1,11 +1,14 @@
 package mx.itesm.aplicacion_comedor.view
 
+import android.R
 import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -38,6 +41,30 @@ class RegistroPersonaFrag : Fragment() {
         val tvCourses = binding.tv
         registrarObservadores()
         registrarEventos()
+
+
+        // Define las opciones de sexo
+        val generoOptions = arrayOf("", "Femenino", "Masculino", "Prefiero no decir")
+        // Crea un ArrayAdapter para el Spinner
+        val generoAdapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, generoOptions)
+        // Configura el Spinner con el ArrayAdapter
+        binding.spinner2.adapter = generoAdapter
+
+        // Define el listener para el Spinner
+        binding.spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Cuando no se selecciona ningún elemento
+            }
+        }
+
         return binding.root
     }
 
@@ -114,7 +141,7 @@ class RegistroPersonaFrag : Fragment() {
             val nombre =  binding.etNombre.text.toString()
             val apellido = binding.etApellido.text.toString()
             val curp = binding.etCURP.text.toString()
-            val sexo = binding.etSexo.text.toString()
+            val sexo = binding.spinner2.selectedItem.toString()
             val fecha = binding.etFecha.text.toString()
 
             viewModel.descargarServicios(nombre, apellido, curp, sexo, fecha)
