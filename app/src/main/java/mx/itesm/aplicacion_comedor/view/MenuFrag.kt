@@ -44,9 +44,10 @@ class MenuFrag : Fragment() {
         binding.btnRegistrarComida.setOnClickListener{
             val accion = MenuFragDirections.actionMenuFragToRegistroComidaFrag()
             findNavController().navigate(accion)
+
         }
-        binding.btnRegistrarVoluntarios.setOnClickListener{
-            val accion = MenuFragDirections.actionMenuFragToEstadisticaFrag()
+        binding.btnRegistrarVoluntario.setOnClickListener{
+            val accion = MenuFragDirections.actionMenuFragToRegistroEmpleadoFrag()
             findNavController().navigate(accion)
         }
         binding.btnEstadisticas.setOnClickListener{
