@@ -21,6 +21,79 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/comidasTotalesCard"
+                android:layout_width="match_parent"
+                android:layout_height="126dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient"
+                    android:padding="6dp">
+
+                    <TextView
+                        android:id="@+id/comidasTotalesTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="6dp"
+                        android:paddingLeft="0dp"
+                        android:text="Comidas Totales"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/comidasTotalesValue"
+                        android:layout_width="225dp"
+                        android:layout_height="58dp"
+                        android:layout_above="@+id/comidasTotalesSubtitulo"
+                        android:layout_below="@+id/comidasTotalesTitle"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:gravity="start|center_vertical"
+                        android:text="---"
+                        android:textColor="#FFFFFF"
+                        android:textSize="45sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/comidasTotalesSubtitulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:paddingLeft="0dp"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15dp" />
+
+                    <ImageView
+                        android:id="@+id/ccomidasTotalesImage"
+                        android:layout_width="122dp"
+                        android:layout_height="92dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:src="@drawable/meal" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:id="@+id/comidasPagadasCard"
                 android:layout_width="match_parent"
                 android:layout_height="126dp"
@@ -49,7 +122,7 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/comdiasPagadasValue"
+                        android:id="@+id/comidasPagadasValue"
                         android:layout_width="225dp"
                         android:layout_height="58dp"
                         android:layout_above="@+id/comidasPagadasSubtitulo"
@@ -59,7 +132,7 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginBottom="0dp"
                         android:gravity="start|center_vertical"
-                        android:text="83"
+                        android:text="---"
                         android:textColor="#FFFFFF"
                         android:textSize="45sp"
                         android:textStyle="bold" />
@@ -71,7 +144,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="6dp"
-                        android:layout_marginBottom="0dp"
+                        android:layout_marginBottom="6dp"
                         android:paddingLeft="0dp"
                         android:textColor="#FFFFFF"
                         android:textSize="15dp" />
@@ -132,7 +205,7 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginBottom="0dp"
                         android:gravity="start|center_vertical"
-                        android:text="9"
+                        android:text="---"
                         android:textColor="#FFFFFF"
                         android:textSize="45sp"
                         android:textStyle="bold" />
@@ -144,7 +217,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="6dp"
-                        android:layout_marginBottom="0dp"
+                        android:layout_marginBottom="6dp"
                         android:paddingLeft="0dp"
                         android:textColor="#FFFFFF"
                         android:textSize="15dp" />
@@ -161,79 +234,6 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="10dp"
                         android:src="@drawable/give_love" />
-
-                </RelativeLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/comidasTotalesCard"
-                android:layout_width="match_parent"
-                android:layout_height="126dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
-                app:cardCornerRadius="20dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/gradient"
-                    android:padding="6dp">
-
-                    <TextView
-                        android:id="@+id/comidasTotalesTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginTop="6dp"
-                        android:paddingLeft="0dp"
-                        android:text="Comidas Totales"
-                        android:textColor="#FFFFFF"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/comidasTotalesValue"
-                        android:layout_width="225dp"
-                        android:layout_height="58dp"
-                        android:layout_above="@+id/comidasTotalesSubtitulo"
-                        android:layout_below="@+id/comidasTotalesTitle"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginBottom="0dp"
-                        android:gravity="start|center_vertical"
-                        android:text="92"
-                        android:textColor="#FFFFFF"
-                        android:textSize="45sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/comidasTotalesSubtitulo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginBottom="0dp"
-                        android:paddingLeft="0dp"
-                        android:textColor="#FFFFFF"
-                        android:textSize="15dp" />
-
-                    <ImageView
-                        android:id="@+id/ccomidasTotalesImage"
-                        android:layout_width="122dp"
-                        android:layout_height="92dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:src="@drawable/meal" />
 
                 </RelativeLayout>
 
@@ -278,7 +278,7 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginBottom="0dp"
                         android:gravity="start|center_vertical"
-                        android:text="$560"
+                        android:text="---"
                         android:textColor="#FFFFFF"
                         android:textSize="45sp"
                         android:textStyle="bold" />
@@ -290,7 +290,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="6dp"
-                        android:layout_marginBottom="0dp"
+                        android:layout_marginBottom="6dp"
                         android:paddingLeft="0dp"
                         android:text="mxn"
                         android:textColor="#FFFFFF"
@@ -337,7 +337,7 @@
                         android:layout_marginStart="6dp"
                         android:layout_marginTop="6dp"
                         android:paddingLeft="0dp"
-                        android:text="voluntarios Presentes"
+                        android:text="Voluntarios Presentes"
                         android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
@@ -352,7 +352,7 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginBottom="0dp"
                         android:gravity="start|center_vertical"
-                        android:text="15"
+                        android:text="---"
                         android:textColor="#FFFFFF"
                         android:textSize="45sp"
                         android:textStyle="bold" />
@@ -364,7 +364,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="6dp"
-                        android:layout_marginBottom="0dp"
+                        android:layout_marginBottom="6dp"
                         android:paddingLeft="0dp"
                         android:textColor="#FFFFFF"
                         android:textSize="15dp" />

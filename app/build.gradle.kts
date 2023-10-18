@@ -46,6 +46,7 @@ android {
 
 dependencies {
 
+    implementation("androidx.gridlayout:gridlayout:1.0.0")
     val room_version = "2.5.0"
 
     implementation("androidx.room:room-runtime:$room_version")
