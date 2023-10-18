@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="custom_button_background_color">#4CAF50</color> <!-- Verde -->
+    <color name="custom_button_border_color">#9E9E9E</color> <!-- Gris -->
+    <color name="btn1">#B49FDC</color>
+    <color name="btn2">#C5EBFE</color>
+    <color name="btn3">#FEFD97</color>
+    <color name="btn4">#FEC9A7</color>
+    <color name="blue">#66D7D1</color>
+
 </resources>

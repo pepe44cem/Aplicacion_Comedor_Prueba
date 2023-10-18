@@ -65,6 +65,9 @@
         <action
             android:id="@+id/action_registroComidaExitosoFrag_to_registroComidaFrag"
             app:destination="@id/registroComidaFrag" />
+        <argument
+            android:name="idVisita"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/registroPersonaFrag"
@@ -83,17 +86,34 @@
         <action
             android:id="@+id/action_registroPersonaExitosoFrag_to_registroComidaExitosoFrag"
             app:destination="@id/registroComidaExitosoFrag" />
+        <argument
+            android:name="codigo"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_registroPersonaExitosoFrag_to_registroComidaFrag"
+            app:destination="@id/registroComidaFrag" />
+        <argument
+            android:name="listaVul"
+            app:argType="string[]" />
     </fragment>
     <fragment
         android:id="@+id/registroEmpleadoFrag"
         android:name="mx.itesm.aplicacion_comedor.view.RegistroEmpleadoFrag"
         android:label="fragment_registro_empleado"
-        tools:layout="@layout/fragment_registro_empleado" />
+        tools:layout="@layout/fragment_registro_empleado" >
+        <action
+            android:id="@+id/action_registroEmpleadoFrag_to_menuFrag"
+            app:destination="@id/menuFrag" />
+    </fragment>
     <fragment
         android:id="@+id/reportesFrag"
         android:name="mx.itesm.aplicacion_comedor.view.ReportesFrag"
         android:label="fragment_reportes"
-        tools:layout="@layout/fragment_reportes" />
+        tools:layout="@layout/fragment_reportes" >
+        <action
+            android:id="@+id/action_reportesFrag_to_menuFrag"
+            app:destination="@id/menuFrag" />
+    </fragment>
     <fragment
         android:id="@+id/estadisticaFrag"
         android:name="mx.itesm.aplicacion_comedor.view.EstadisticasFrag"
