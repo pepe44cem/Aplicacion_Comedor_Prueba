@@ -47,6 +47,9 @@
         <action
             android:id="@+id/action_registroComidaFrag_to_registroPersonaFrag"
             app:destination="@id/registroPersonaFrag" />
+        <action
+            android:id="@+id/action_registroComidaFrag_to_menuFrag"
+            app:destination="@id/menuFrag" />
     </fragment>
     <fragment
         android:id="@+id/lecturaQRFrag"
