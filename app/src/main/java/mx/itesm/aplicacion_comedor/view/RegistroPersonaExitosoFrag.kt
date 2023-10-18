@@ -25,10 +25,12 @@ import androidx.core.content.ContextCompat
 import android.Manifest
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import mx.itesm.aplicacion_comedor.databinding.FragmentRegistroComidaExitosoBinding
 import mx.itesm.aplicacion_comedor.databinding.FragmentRegistroPersonaBinding
 import mx.itesm.aplicacion_comedor.databinding.FragmentRegistroPersonaExitosoBinding
+import mx.itesm.aplicacion_comedor.model.others.Single
 
 
 
@@ -68,10 +70,11 @@ class RegistroPersonaExitosoFrag : Fragment() {
 
     private fun registrarEventos() {
         binding.btnComida.setOnClickListener{
-
+            viewModel.agregarConCodigo(args.codigo, Single.idComedor)
         }
         binding.btnRegresar.setOnClickListener{
-
+             val accion = RegistroPersonaExitosoFragDirections.actionRegistroPersonaExitosoFragToRegistroComidaFrag()
+            findNavController().navigate(accion)
         }
     }
 
@@ -86,6 +89,11 @@ class RegistroPersonaExitosoFrag : Fragment() {
 
         viewModel.id.observe(viewLifecycleOwner, Observer { id ->
             Log.d("VUL", "Se inserto vulnerabilidad")
+        })
+
+        viewModel.id2.observe(viewLifecycleOwner, Observer { id ->
+            val accion = RegistroPersonaExitosoFragDirections.actionRegistroPersonaExitosoFragToRegistroComidaExitosoFrag(id)
+            findNavController().navigate(accion)
         })
     }
 
