@@ -14,6 +14,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.telephony.SmsManager
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -35,6 +36,7 @@ class RegistroPersonaExitosoFrag : Fragment() {
     private val viewModel: RegistroPersonaExitosoVM by viewModels()
     private lateinit var binding : FragmentRegistroPersonaExitosoBinding
     val args: RegistroPersonaExitosoFragArgs by navArgs()
+    val cont = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,9 +56,18 @@ class RegistroPersonaExitosoFrag : Fragment() {
             mostrarDialogo("Correo")
         }
         registrarObservadores()
-        //registrarEventos()
+        registrarEventos()
 
         return binding.root
+    }
+
+    private fun registrarEventos() {
+        binding.btnComida.setOnClickListener{
+
+        }
+        binding.btnRegresar.setOnClickListener{
+
+        }
     }
 
 
@@ -66,6 +77,10 @@ class RegistroPersonaExitosoFrag : Fragment() {
     private fun registrarObservadores() {
         viewModel.bit.observe(viewLifecycleOwner, Observer { bit ->
             binding.imgQR.setImageBitmap(bit)
+        })
+
+        viewModel.id.observe(viewLifecycleOwner, Observer { id ->
+            Log.d("VUL", "Se inserto vulnerabilidad")
         })
     }
 
@@ -141,7 +156,14 @@ class RegistroPersonaExitosoFrag : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        val vulnerabilidades = args.listaVul
+        val cod = args.codigo
+        for(i in vulnerabilidades){
+            viewModel.insertarVul(cod, i)
+            Log.d("AQUI", i)
+        }
         viewModel.crearQR(args.codigo)
         binding.tvCodigo.text = args.codigo.toString()
+
     }
 }

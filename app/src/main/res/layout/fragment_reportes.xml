@@ -8,7 +8,7 @@
     tools:context=".view.ReportesFrag">
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/etReporte"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -32,5 +32,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/etReporte" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import mx.itesm.aplicacion_comedor.model.bd_global.Llamadas
 import mx.itesm.aplicacion_comedor.model.bd_global.Retro
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Condiciones
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.idusuario
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.nuevoUsuario
 import mx.itesm.aplicacion_comedor.model.others.QR
@@ -19,7 +20,22 @@ class RegistroPersonaVM : ViewModel() {
     val descargaAPI = Retro().createRetrofit()
     val id = MutableLiveData<Int>()
     val error = MutableLiveData<String>()
+    val lst = MutableLiveData<List<String>>()
 
+
+    fun solicitarListaVulneravilidades(){
+        val call = descargaAPI.listaCondiciones()
+        call.enqueue(object : Callback<Condiciones>{
+            override fun onResponse(call: Call<Condiciones>, response: Response<Condiciones>) {
+                lst.value = response.body()?.user
+            }
+
+            override fun onFailure(call: Call<Condiciones>, t: Throwable) {
+                error.value = "Error al conectar con el servidor"
+            }
+        })
+    }
+    //Agrega un nuevo usuario
     fun descargarServicios(nombre: String, apellido: String,
                            curp : String, sexo : String,
                            fecha : String){
@@ -33,8 +49,8 @@ class RegistroPersonaVM : ViewModel() {
                     id.value = response.body()?.idusuario
                 }else{
                     Log.d("TAG", "Código de respuesta: ${response.code()}")
-                    Log.d("TAG", "Código de mensaje: ${response.message()}")
-                    error.value = "Error al conectar con el servidor" + response.message() + ": " + response.code()
+                    Log.d("TAG", "Código de mensaje AAAA: ${response.message()}")
+                    error.value = "Error AL conectar con el servidor" + response.message() + ": " + response.code()
                 }
             }
             override fun onFailure(call: Call<idusuario>, t: Throwable) {

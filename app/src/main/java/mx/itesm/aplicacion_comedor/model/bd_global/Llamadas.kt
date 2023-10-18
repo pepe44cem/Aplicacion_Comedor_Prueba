@@ -1,14 +1,23 @@
 package mx.itesm.aplicacion_comedor.model.bd_global
 
 
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Asistencia
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Condicion
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Condiciones
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdAsistencia
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdComedor
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdCondicion
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdReporte
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdVisita
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdVoluntario
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Message
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.ModificarVisita
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.NombreVoluntario
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.NombresVoluntario
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.NuevaComidaCURP
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Reporte
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.UsuarioContrasena
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Voluntario
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.idusuario
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.maxIdUsuario
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.nuevaComidaCodigo
@@ -45,7 +54,25 @@ interface Llamadas {
     @PUT("/modificarVisita")
     fun modificarVisita(@Body modificarVisita: ModificarVisita) : Call<Message>
 
+    @Headers("Content-Type: application/json")
+    @GET("/listaCondiciones")
+    fun listaCondiciones() : Call<Condiciones>
 
+    @Headers("Content-Type: application/json")
+    @POST("/insertarVulnerabilidades")
+    fun insertarVulnerabilidades(@Body condicion: Condicion) : Call<IdCondicion>
+
+    @Headers("Content-Type: application/json")
+    @POST("/insertarReporte")
+    fun insertarReporte(@Body reporte: Reporte) : Call<IdReporte>
+
+    @Headers("Content-Type: application/json")
+    @POST("/agregarVoluntario")
+    fun agregarVoluntario(@Body voluntario: Voluntario) : Call<IdVoluntario>
+
+    @Headers("Content-Type: application/json")
+    @POST("/agregarAsistencia")
+    fun agregarAsistencia(@Body asistencia: Asistencia) : Call<IdAsistencia>
 
     @GET
     fun obtenerMaximoCodigo(): Call<maxIdUsuario>

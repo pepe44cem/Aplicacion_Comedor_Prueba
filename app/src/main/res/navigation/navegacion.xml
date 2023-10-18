@@ -92,12 +92,19 @@
         <action
             android:id="@+id/action_registroPersonaExitosoFrag_to_registroComidaFrag"
             app:destination="@id/registroComidaFrag" />
+        <argument
+            android:name="listaVul"
+            app:argType="string[]" />
     </fragment>
     <fragment
         android:id="@+id/registroEmpleadoFrag"
         android:name="mx.itesm.aplicacion_comedor.view.RegistroEmpleadoFrag"
         android:label="fragment_registro_empleado"
-        tools:layout="@layout/fragment_registro_empleado" />
+        tools:layout="@layout/fragment_registro_empleado" >
+        <action
+            android:id="@+id/action_registroEmpleadoFrag_to_menuFrag"
+            app:destination="@id/menuFrag" />
+    </fragment>
     <fragment
         android:id="@+id/reportesFrag"
         android:name="mx.itesm.aplicacion_comedor.view.ReportesFrag"

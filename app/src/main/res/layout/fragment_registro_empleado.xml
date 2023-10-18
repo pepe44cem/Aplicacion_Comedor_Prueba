@@ -105,11 +105,11 @@
             android:paddingLeft="16dp"
             android:paddingTop="16dp"
             android:paddingRight="16dp"
-            android:text="Sexo:"
+            android:text="Telefono"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etSexo"
+            android:id="@+id/etTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -119,29 +119,18 @@
             android:paddingEnd="16dp"
             android:paddingRight="16dp" />
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp"
-            android:text="Fecha de nacimieto:"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/etFecha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="date" />
-
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnNuevoVol"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="LISTO" />
+            android:text="AGREGAR VOLUNTARIO NUEVO" />
+
+        <Button
+            android:id="@+id/btnRegistrarVol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="AGREGAR VOLUNTARIO REGISTRADO" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
