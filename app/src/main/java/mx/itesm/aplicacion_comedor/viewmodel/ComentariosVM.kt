@@ -1,7 +1,34 @@
 package mx.itesm.aplicacion_comedor.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ComentariosVM : ViewModel() {
-    // TODO: Implement the ViewModel
+
+    val fechaDesdeString = MutableLiveData<String>()
+    val fechaHastaString = MutableLiveData<String>()
+
+    val yearDesde = MutableLiveData<Int>()
+    val mesDesde = MutableLiveData<Int>()
+    val diaDesde = MutableLiveData<Int>()
+
+    val yearHasta = MutableLiveData<Int>()
+    val mesHasta = MutableLiveData<Int>()
+    val diaHasta = MutableLiveData<Int>()
+
+    fun cambiarFechaDesde(year: Int, mes: Int, dia: Int){
+
+        fechaDesdeString.value = String.format("%d-%02d-%02d", year, mes + 1, dia)
+        yearDesde.value=year
+        mesDesde.value=mes
+        diaDesde.value=dia
+    }
+
+    fun cambiarFechaHasta(year: Int, mes: Int, dia: Int){
+
+        fechaHastaString.value = String.format("%d-%02d-%02d", year, mes + 1, dia)
+        yearHasta.value=year
+        mesHasta.value=mes
+        diaHasta.value=dia
+    }
 }
