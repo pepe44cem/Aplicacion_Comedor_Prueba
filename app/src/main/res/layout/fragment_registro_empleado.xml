@@ -5,132 +5,114 @@
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradiente_fondo"
     tools:context=".view.RegistroEmpleadoFrag">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView7"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:padding="20dp"
+        android:text="Llene los datos: "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/white2_btn_background"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView7">
 
-        <TextView
-            android:id="@+id/textView7"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="Llene los datos: "
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:layout_margin="16dp">
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp"
-            android:text="Nombre(s): "
-            android:textStyle="bold" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre (s)" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/etNombre"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:paddingStart="16dp"
-            android:paddingLeft="16dp"
-            android:paddingEnd="16dp"
-            android:paddingRight="16dp" />
+            android:layout_height="match_parent"
+            android:layout_margin="16dp">
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp"
-            android:text="Apellidos: "
-            android:textStyle="bold" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etApellido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Apellidos" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/etApellido"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:paddingStart="16dp"
-            android:paddingLeft="16dp"
-            android:paddingEnd="16dp"
-            android:paddingRight="16dp" />
+            android:layout_height="match_parent"
+            android:layout_margin="16dp">
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp"
-            android:text="CURP"
-            android:textStyle="bold" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCURP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CURP" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/etCURP"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:paddingStart="16dp"
-            android:paddingLeft="16dp"
-            android:paddingEnd="16dp"
-            android:paddingRight="16dp" />
+            android:layout_height="match_parent"
+            android:layout_margin="16dp">
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp"
-            android:text="Telefono"
-            android:textStyle="bold" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Telefono" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/etTelefono"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:paddingStart="16dp"
-            android:paddingLeft="16dp"
-            android:paddingEnd="16dp"
-            android:paddingRight="16dp" />
-
-        <Button
-            android:id="@+id/btnNuevoVol"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="AGREGAR VOLUNTARIO NUEVO" />
-
-        <Button
-            android:id="@+id/btnRegistrarVol"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="AGREGAR VOLUNTARIO REGISTRADO" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnNuevoVol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/white"
+        android:foregroundGravity="center_vertical|center|center_horizontal"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="AGREGAR VOLUNTARIO NUEVO"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/white"
+        android:textColorLink="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarVol" />
+
+    <Button
+        android:id="@+id/btnRegistrarVol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/white"
+        android:foregroundGravity="center_vertical|center|center_horizontal"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="AGREGAR VOLUNTARIO REGISTRADO"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/white"
+        android:textColorLink="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

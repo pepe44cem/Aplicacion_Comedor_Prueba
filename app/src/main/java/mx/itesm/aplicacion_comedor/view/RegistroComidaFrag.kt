@@ -60,6 +60,10 @@ class RegistroComidaFrag : Fragment() {
         binding.ibEscanear.setOnClickListener{
             iniciarEscaneo()
         }
+        binding.Regresar.setOnClickListener {
+            val accion = RegistroComidaFragDirections.actionRegistroComidaFragToMenuFrag()
+            findNavController().navigate(accion)
+        }
     }
 
     private fun lanzarPopUpCodigo() {

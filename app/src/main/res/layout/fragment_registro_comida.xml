@@ -90,6 +90,18 @@
                 android:layout_margin="20dp"
                 android:backgroundTint="@color/blue"
                 android:text="Nueva persona" />
+
+            <Button
+                android:id="@+id/Regresar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:backgroundTint="@color/blue"
+                android:gravity="center"
+                android:text="Regresar"
+                android:textColorHighlight="@color/blue"
+                android:textColorLink="@color/blue" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
