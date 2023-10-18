@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navegacion"
             
-    app:startDestination="@id/logInFrag">
+    app:startDestination="@id/estadisticaFrag">
 
     <fragment
         android:id="@+id/logInFrag"
