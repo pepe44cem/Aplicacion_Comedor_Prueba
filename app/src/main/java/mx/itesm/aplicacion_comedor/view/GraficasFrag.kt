@@ -69,6 +69,12 @@ class GraficasFrag : Fragment() {
         estilizarLineChart(binding.linearChartServicio)
         estilizarBarChart(binding.barChartServicio)
 
+        estilizarLineChart(binding.linearChartHigiene)
+        estilizarBarChart(binding.barChartHigiene)
+
+        estilizarLineChart(binding.linearChartComida)
+        estilizarBarChart(binding.barChartComida)
+
 
     }
 
@@ -112,7 +118,7 @@ class GraficasFrag : Fragment() {
 
     private fun actualizarBarChart(chart: BarChart, entries: ArrayList<BarEntry>){
         val dataSet = BarDataSet(entries, "")
-        dataSet.colors = ColorTemplate.COLORFUL_COLORS.toList()
+        dataSet.colors = ColorTemplate.JOYFUL_COLORS.toList()
         dataSet.valueTextColor=Color.WHITE
         val barData = BarData(dataSet)
         chart.data = barData
@@ -125,6 +131,12 @@ class GraficasFrag : Fragment() {
     private fun actualizarTodasGraficas(){
         actualizarLineChart(binding.linearChartServicio, viewModel.entriesLcServicio.value!!)
         actualizarBarChart(binding.barChartServicio, viewModel.entriesBcServicio.value!!)
+
+        actualizarLineChart(binding.linearChartHigiene, viewModel.entriesLcServicio.value!!)
+        actualizarBarChart(binding.barChartHigiene, viewModel.entriesBcServicio.value!!)
+
+        actualizarLineChart(binding.linearChartComida, viewModel.entriesLcServicio.value!!)
+        actualizarBarChart(binding.barChartComida, viewModel.entriesBcServicio.value!!)
 
     }
 
