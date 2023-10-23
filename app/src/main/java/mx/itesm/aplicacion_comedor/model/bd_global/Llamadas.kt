@@ -15,16 +15,15 @@ import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdVisita
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdVoluntario
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Message
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.ModificarVisita
-import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.NombreVoluntario
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.NombresVoluntario
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.NuevaComidaCURP
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Reporte
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.UsuarioContrasena
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Voluntario
-import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.idusuario
-import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.maxIdUsuario
-import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.nuevaComidaCodigo
-import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.nuevoUsuario
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdUsuario
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.MaxIdUsuario
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.NuevaComidaCodigo
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.NuevoUsuario
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -32,6 +31,13 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.PUT
 
+/**
+ * Autores: José Antonio Moreno
+ *          José Alonso Segura
+ *
+ * Clase que define las rutas de las diferentes llamadas al servidor, en formato JSON.
+ * Representa al MODELO en la arquitectur MVVM
+ */
 interface Llamadas {
 
     @Headers("Content-Type: application/json")
@@ -48,11 +54,11 @@ interface Llamadas {
 
     @Headers("Content-Type: application/json")
     @POST("/agregarUsuario")
-    fun agregarUsuario(@Body user: nuevoUsuario): Call<idusuario>
+    fun agregarUsuario(@Body user: NuevoUsuario): Call<IdUsuario>
 
     @Headers("Content-Type: application/json")
     @POST("/agregarComidaCodigo")
-    fun agregarComidaCodigo(@Body comida: nuevaComidaCodigo): Call<IdVisita>
+    fun agregarComidaCodigo(@Body comida: NuevaComidaCodigo): Call<IdVisita>
 
     @Headers("Content-Type: application/json")
     @POST("/agregarComidaCURP")
@@ -87,5 +93,5 @@ interface Llamadas {
     fun agregarAsistencia(@Body asistencia: Asistencia) : Call<IdAsistencia>
 
     @GET
-    fun obtenerMaximoCodigo(): Call<maxIdUsuario>
+    fun obtenerMaximoCodigo(): Call<MaxIdUsuario>
 }

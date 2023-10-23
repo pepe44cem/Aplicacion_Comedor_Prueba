@@ -20,6 +20,14 @@ import mx.itesm.aplicacion_comedor.databinding.FragmentRegistroEmpleadoBinding
 import mx.itesm.aplicacion_comedor.model.others.Single
 import mx.itesm.aplicacion_comedor.viewmodel.RegistroEmpleadoVM
 
+/**
+ * Autor : Jose Antonio Moreno Tahuilan
+ * Clase que representa a la VISTA en la arquitectura MVVM
+ * Se encarga de controlar los elementos de la vista,
+ * ademas de llamar a las funciones que se necesiten para la logica
+ * para poder registrar nuevo empleados o registrar el curp de los ya registrados.
+ */
+
 class RegistroEmpleadoFrag : Fragment() {
 
     companion object {

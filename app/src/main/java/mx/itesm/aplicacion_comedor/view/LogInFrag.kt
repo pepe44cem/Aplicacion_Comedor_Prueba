@@ -13,6 +13,12 @@ import mx.itesm.aplicacion_comedor.databinding.FragmentLogInBinding
 import mx.itesm.aplicacion_comedor.model.others.Single
 import mx.itesm.aplicacion_comedor.viewmodel.LogInVM
 
+/**
+ * Autor : Jose Antonio Moreno Tahuilan
+ * Clase que representa a la VISTA en la arquitectura MVVM
+ * Se encarga de controlar los elementos de la vista,
+ * ademas de llamar a las funciones que se necesiten para la logica en el Log In de la aplicacion.
+ */
 
 class LogInFrag : Fragment() {
 
@@ -68,7 +74,7 @@ class LogInFrag : Fragment() {
             } else if (contrasena.isBlank()){
                 binding.etContrasena.error = "No deje valores en blanco."
             } else {
-                viewModel.descargarServicios(usuario, contrasena)
+                viewModel.descargarServicios(usuario, contrasena) //Verifica el usuario y la contraseña.
             }
 
         }

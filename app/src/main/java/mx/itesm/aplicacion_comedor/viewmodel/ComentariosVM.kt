@@ -3,6 +3,12 @@ package mx.itesm.aplicacion_comedor.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
+/**
+ * Autor : Jose Alonso Segura
+ * Clase que representa a la VIEW MODEL en la arquitectura MVVM
+ * Se encarga de controlar la interaccion entre la VISTA y el MODELO,
+ * sobretodo manda a llamar y maneja el resultado las funciones que llaman a al BD.
+ */
 class ComentariosVM : ViewModel() {
 
     val fechaDesdeString = MutableLiveData<String>()

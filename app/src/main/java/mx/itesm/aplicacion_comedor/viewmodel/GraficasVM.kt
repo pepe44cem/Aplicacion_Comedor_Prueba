@@ -10,6 +10,13 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.concurrent.TimeUnit
 
+/**
+ * Autor : Jose Alonso Segura
+ * Clase que representa a la VIEW MODEL en la arquitectura MVVM
+ * Se encarga de controlar la interaccion entre la VISTA y el MODELO,
+ * sobretodo manda a llamar y maneja el resultado las funciones que llaman a al BD.
+ */
+
 class GraficasVM : ViewModel() {
 
     private val graficasModel = Graficas()

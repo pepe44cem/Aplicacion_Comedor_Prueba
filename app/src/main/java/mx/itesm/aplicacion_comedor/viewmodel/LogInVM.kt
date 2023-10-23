@@ -10,6 +10,13 @@ import androidx.lifecycle.MutableLiveData
 import mx.itesm.aplicacion_comedor.model.bd_global.Retro
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdComedor
 
+/**
+ * Autor : Jose Antonio Moreno :)
+ * Clase que representa a la VIEW MODEL en la arquitectura MVVM
+ * Se encarga de controlar la interaccion entre la VISTA y el MODELO,
+ * sobretodo manda a llamar y maneja el resultado las funciones que llaman a al BD,
+ * que verifican las credenciales de los comedores.
+ */
 class LogInVM : ViewModel() {
 
     val descargaAPI = Retro().createRetrofit()

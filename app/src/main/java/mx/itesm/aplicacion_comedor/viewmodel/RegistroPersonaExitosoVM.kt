@@ -8,11 +8,19 @@ import mx.itesm.aplicacion_comedor.model.bd_global.Retro
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Condicion
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdCondicion
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdVisita
-import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.nuevaComidaCodigo
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.NuevaComidaCodigo
 import mx.itesm.aplicacion_comedor.model.others.QR
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
+/**
+ * Autor : Jose Antonio Moreno :)
+ * Clase que representa a la VIEW MODEL en la arquitectura MVVM
+ * Se encarga de controlar la interaccion entre la VISTA y el MODELO,
+ * sobretodo manda a llamar y maneja el resultado las funciones que llaman a al BD
+ * que agregan las vulnerabilidades de las personas que acaban de ser registradas.
+ */
 
 class RegistroPersonaExitosoVM : ViewModel() {
     val qrHelper = QR()
@@ -43,7 +51,7 @@ class RegistroPersonaExitosoVM : ViewModel() {
 
     fun agregarConCodigo(codigo : Int, comedor : Int){
         Log.d("TAG", "SI ENTRO")
-        val nuevaComidaCodigo = nuevaComidaCodigo(codigo, comedor)
+        val nuevaComidaCodigo = NuevaComidaCodigo(codigo, comedor)
         val call = descargaAPI.agregarComidaCodigo(nuevaComidaCodigo)
 
         call.enqueue(object : Callback<IdVisita>{

@@ -21,6 +21,12 @@ import androidx.navigation.fragment.findNavController
 import mx.itesm.aplicacion_comedor.model.others.Validacion
 import mx.itesm.aplicacion_comedor.model.others.Single
 
+/**
+ * Autor : Jose Antonio Moreno Tahuilan
+ * Clase que representa a la VISTA en la arquitectura MVVM
+ * Se encarga de controlar los elementos de la vista,
+ * ademas de recuperar los datos para posteriormente poder registrar a una nueva persona.
+ */
 
 class RegistroComidaFrag : Fragment() {
 
