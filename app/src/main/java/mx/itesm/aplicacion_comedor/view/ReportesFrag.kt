@@ -45,11 +45,21 @@ class ReportesFrag : Fragment() {
             val accion = ReportesFragDirections.actionReportesFragToMenuFrag()
             findNavController().navigate(accion)
         })
+
+        viewModel.error.observe(viewLifecycleOwner) { error ->
+            Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun registrarEventos() {
         binding.button3.setOnClickListener {
-            viewModel.agrergarReporte(Single.idComedor, binding.etReporte.text.toString())
+            val texto = binding.etReporte.text.toString()
+            if (texto.isBlank()){
+                Toast.makeText(requireContext(), "Por favor complete el reporte.", Toast.LENGTH_LONG).show()
+            } else {
+                viewModel.agrergarReporte(Single.idComedor, texto)
+            }
+
         }
     }
 

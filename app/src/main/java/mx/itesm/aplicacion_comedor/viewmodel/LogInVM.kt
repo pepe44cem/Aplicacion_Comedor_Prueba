@@ -28,7 +28,7 @@ class LogInVM : ViewModel() {
                 }else{
                     Log.d("TAG", "Código de respuesta: ${response.code()}")
                     Log.d("TAG", "Código de mensaje: ${response.message()}")
-                    error.value = "Error al conectar con el servidor" + response.message() + ": " + response.code()
+                    error.value = "Usuario o contraseña incorrectos, intente de nuevo."
                 }
             }
             override fun onFailure(call: Call<IdComedor>, t: Throwable) {

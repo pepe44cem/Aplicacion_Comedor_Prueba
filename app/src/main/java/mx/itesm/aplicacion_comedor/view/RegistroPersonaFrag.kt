@@ -1,7 +1,6 @@
 package mx.itesm.aplicacion_comedor.view
 
 import android.R
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,12 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.card.MaterialCardView
 import mx.itesm.aplicacion_comedor.databinding.FragmentRegistroPersonaBinding
+import mx.itesm.aplicacion_comedor.model.others.Validacion
 import mx.itesm.aplicacion_comedor.viewmodel.RegistroPersonaVM
 
 class RegistroPersonaFrag : Fragment() {
@@ -32,25 +32,17 @@ class RegistroPersonaFrag : Fragment() {
     var courseList = mutableListOf<Int>()
     var courseArray = listOf<String>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    private val valid = Validacion()
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentRegistroPersonaBinding.inflate(layoutInflater)
         val selectCard = binding.materialCardView
         val tvCourses = binding.tv
         registrarObservadores()
         registrarEventos()
-
-
-        // Define las opciones de sexo
         val generoOptions = arrayOf("", "Femenino", "Masculino", "Prefiero no decir")
-        // Crea un ArrayAdapter para el Spinner
         val generoAdapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, generoOptions)
-        // Configura el Spinner con el ArrayAdapter
         binding.spinner2.adapter = generoAdapter
-
-        // Define el listener para el Spinner
         binding.spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -59,7 +51,6 @@ class RegistroPersonaFrag : Fragment() {
                 id: Long
             ) {
             }
-
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // Cuando no se selecciona ningún elemento
             }
@@ -67,16 +58,13 @@ class RegistroPersonaFrag : Fragment() {
 
         return binding.root
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
     override fun onStart() {
         super.onStart()
         viewModel.solicitarListaVulneravilidades()
     }
-
     private fun registrarObservadores() {
         viewModel.id.observe(viewLifecycleOwner, Observer {codigo ->
             val accion = RegistroPersonaFragDirections.actionRegistroPersonaFragToRegistroPersonaExitosoFrag(codigo, importantSelectedCourses.toTypedArray())
@@ -93,7 +81,6 @@ class RegistroPersonaFrag : Fragment() {
             }
         })
     }
-
     private fun showCoursesDialog() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Select Courses")
@@ -144,7 +131,22 @@ class RegistroPersonaFrag : Fragment() {
             val sexo = binding.spinner2.selectedItem.toString()
             val fecha = binding.etFecha.text.toString()
 
-            viewModel.descargarServicios(nombre, apellido, curp, sexo, fecha)
+            if (nombre.isBlank()) {
+                Toast.makeText(requireContext(), "Por favor llene el usuario.", Toast.LENGTH_LONG).show()
+            } else if (apellido.isBlank()) {
+                Toast.makeText(requireContext(), "Por favor llene el apellido.", Toast.LENGTH_LONG).show()
+            } else if (curp.isBlank()) {
+                Toast.makeText(requireContext(), "Por favor llene el CURP.", Toast.LENGTH_LONG).show()
+            } else if (sexo.isBlank()) {
+                Toast.makeText(requireContext(), "Por favor seleccione el sexo.", Toast.LENGTH_LONG).show()
+            } else if (fecha.isBlank()) {
+                Toast.makeText(requireContext(), "Por favor llene la fecha.", Toast.LENGTH_LONG).show()
+            } else if (valid.esCURPValida(curp)) {
+                binding.etCURP.error = "Formato invalido."
+                Toast.makeText(requireContext(), "El formato de la CURP no es valido, intente nuevamente", Toast.LENGTH_LONG).show()
+            } else {
+                viewModel.descargarServicios(nombre, apellido, curp, sexo, fecha)
+            }
         }
     }
 }

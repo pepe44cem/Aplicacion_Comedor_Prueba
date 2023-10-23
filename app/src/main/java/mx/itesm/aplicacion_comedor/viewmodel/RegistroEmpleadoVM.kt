@@ -14,7 +14,6 @@ import retrofit2.Response
 
 class RegistroEmpleadoVM : ViewModel() {
     val descargaAPI = Retro().createRetrofit()
-
     val id = MutableLiveData<String>()
     val error = MutableLiveData<String>()
     val idasistencia = MutableLiveData<Int>()
@@ -53,7 +52,6 @@ class RegistroEmpleadoVM : ViewModel() {
                     error.value = "Error AL conectar con el servidor" + response.message() + ": " + response.code()
                 }
             }
-
             override fun onFailure(call: Call<IdVoluntario>, t: Throwable) {
                 error.value = "Error al conectar con el servidor"
             }

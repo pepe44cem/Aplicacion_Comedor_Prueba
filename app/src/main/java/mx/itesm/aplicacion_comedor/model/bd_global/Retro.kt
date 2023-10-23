@@ -7,7 +7,7 @@ class Retro {
     fun createRetrofit(): Llamadas {
         val retrofit by lazy {
             Retrofit.Builder()
-                .baseUrl("http://3.227.215.149:8080/")
+                .baseUrl("https://ccdifatizapan.ddns.net:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }

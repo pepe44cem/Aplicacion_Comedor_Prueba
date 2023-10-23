@@ -63,6 +63,7 @@ class RegistroEmpleadoFrag : Fragment() {
 
         miDialog.setPositiveButton("Listo", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
             val texto = etCURP.text.toString()
+            Log.d("QUE SACA?", texto)
             viewModel.agrgarAsistencia(Single.idComedor, texto)
         })
         miDialog.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->

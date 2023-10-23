@@ -5,19 +5,22 @@
     android:id="@+id/frameLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradiente_fondo"
     tools:context=".view.ReportesFrag">
 
     <EditText
         android:id="@+id/etReporte"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="49dp"
+        android:layout_marginBottom="16dp"
+        android:padding="25dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Pon aquí tu reporte"
+        android:hint="Pon aquí tu reporte"
+        android:background="@drawable/white_btn_background"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,9 +31,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="103dp"
+        android:backgroundTint="@color/blue"
         android:text="Generar reporte"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etReporte" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
