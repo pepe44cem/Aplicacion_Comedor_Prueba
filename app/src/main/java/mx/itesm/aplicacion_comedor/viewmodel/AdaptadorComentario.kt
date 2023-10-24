@@ -10,10 +10,14 @@ import mx.itesm.aplicacion_comedor.R
 import mx.itesm.aplicacion_comedor.databinding.RenglonComentarioBinding
 import mx.itesm.aplicacion_comedor.model.others.Comentario
 
+/**
+ * Autor: Alonso Segura
+ * Clase que sirve como adaptador para llenar los comentarios que se mostraran en la seccion de
+ * graficas.
+ */
+
 class AdaptadorComentario (private val contexto: Context, var arrComentarios: Array<Comentario>)
     : RecyclerView.Adapter<AdaptadorComentario.RenglonComentario>(){
-
-
 
     class RenglonComentario (var vistaRenglon: View): RecyclerView.ViewHolder(vistaRenglon){
         fun set(comentario: Comentario){

@@ -32,7 +32,14 @@ import mx.itesm.aplicacion_comedor.databinding.FragmentRegistroPersonaBinding
 import mx.itesm.aplicacion_comedor.databinding.FragmentRegistroPersonaExitosoBinding
 import mx.itesm.aplicacion_comedor.model.others.Single
 
-
+/**
+ * Autor : Jose Antonio Moreno Tahuilan
+ * Clase que representa a la VISTA en la arquitectura MVVM
+ * Se encarga de controlar los elementos de la vista,
+ * ademas de llamar a las funciones que se necesiten para la logica
+ * cuando ya se registro una persona, al principio no se registran sus vulnerabilidades,
+ * es hasta el final.
+ */
 
 class RegistroPersonaExitosoFrag : Fragment() {
 

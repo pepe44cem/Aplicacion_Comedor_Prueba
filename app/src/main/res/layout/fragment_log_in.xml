@@ -60,12 +60,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="30dp">
+            android:padding="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp">
+                android:layout_margin="5dp"
+                app:startIconDrawable = "@drawable/persona"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/error">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etUsuario"
@@ -77,15 +83,18 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp">
+                android:layout_margin="5dp"
+                app:startIconDrawable = "@drawable/candado"
+                app:endIconMode = "password_toggle"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/error">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etContrasena"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Contraseña"
-                    android:inputType="textPassword"
-                    />
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -93,7 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:background="@drawable/gradiente_fondo"
+                android:backgroundTint="@color/blue"
                 android:text="Listo" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

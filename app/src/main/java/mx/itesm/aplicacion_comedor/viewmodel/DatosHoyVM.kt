@@ -12,6 +12,13 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback
 
+/**
+ * Autor : Jose Alonso Segura
+ * Clase que representa a la VIEW MODEL en la arquitectura MVVM
+ * Se encarga de controlar la interaccion entre la VISTA y el MODELO,
+ * sobretodo manda a llamar y maneja el resultado las funciones que llaman a al BD.
+ */
+
 class DatosHoyVM : ViewModel() {
     val descargaAPI = Retro().createRetrofit()
 
@@ -40,7 +47,7 @@ class DatosHoyVM : ViewModel() {
             }
 
             override fun onFailure(call: Call<DatosComidasHoy>, t: Throwable) {
-                Log.e("TAG DE MI TIO EL AQUEL", "Server connection failed", t)
+                Log.e("TAG", "Server connection failed", t)
             }
         })
 
@@ -55,7 +62,7 @@ class DatosHoyVM : ViewModel() {
             }
 
             override fun onFailure(call: Call<VoluntariosAsistentesHoy>, t: Throwable) {
-                Log.e("TAG DE MI TIO EL AQUEL", "Server connection failed", t)
+                Log.e("TAG", "Server connection failed", t)
             }
         })
     }

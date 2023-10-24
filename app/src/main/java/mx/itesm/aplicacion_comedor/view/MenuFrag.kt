@@ -11,6 +11,12 @@ import mx.itesm.aplicacion_comedor.R
 import mx.itesm.aplicacion_comedor.databinding.FragmentMenuBinding
 import mx.itesm.aplicacion_comedor.viewmodel.MenuVM
 
+/**
+ * Autor : Jose Antonio Moreno Tahuilan
+ * Clase que representa a la VISTA en la arquitectura MVVM
+ * Se de mandar a otros fragmentos, es decir sirve de menu de opciones.
+ */
+
 class MenuFrag : Fragment() {
 
     companion object {

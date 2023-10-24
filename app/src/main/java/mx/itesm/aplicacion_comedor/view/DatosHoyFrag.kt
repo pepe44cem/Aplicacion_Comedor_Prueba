@@ -10,6 +10,15 @@ import androidx.lifecycle.Observer
 import mx.itesm.aplicacion_comedor.viewmodel.DatosHoyVM
 import mx.itesm.aplicacion_comedor.databinding.FragmentDatosHoyBinding
 
+/**
+ * Autor : Jose Alonso Segura
+ * Clase que representa a la VISTA en la arquitectura MVVM
+ * Se encarga de controlar los elementos de la vista,
+ * ademas de llamar a las funciones que se necesiten para la logica
+ * en la sección de mostrar los datos mas importantes del dia en la
+ * parte de las graficas.
+ */
+
 class DatosHoyFrag : Fragment() {
 
     companion object {

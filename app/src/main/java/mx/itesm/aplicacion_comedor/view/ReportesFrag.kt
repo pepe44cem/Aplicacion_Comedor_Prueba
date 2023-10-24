@@ -18,6 +18,13 @@ import mx.itesm.aplicacion_comedor.databinding.FragmentReportesBinding
 import mx.itesm.aplicacion_comedor.model.others.Single
 import mx.itesm.aplicacion_comedor.viewmodel.ReportesVM
 
+/**
+ * Autor : Jose Antonio Moreno Tahuilan
+ * Clase que representa a la VISTA en la arquitectura MVVM
+ * Se encarga de controlar los elementos de la vista,
+ * ademas de llamar a las funciones que se necesiten para la logica
+ * en la sección de reportes de la aplicación.
+ */
 class ReportesFrag : Fragment() {
 
     companion object {
@@ -45,11 +52,21 @@ class ReportesFrag : Fragment() {
             val accion = ReportesFragDirections.actionReportesFragToMenuFrag()
             findNavController().navigate(accion)
         })
+
+        viewModel.error.observe(viewLifecycleOwner) { error ->
+            Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun registrarEventos() {
         binding.button3.setOnClickListener {
-            viewModel.agrergarReporte(Single.idComedor, binding.etReporte.text.toString())
+            val texto = binding.etReporte.text.toString()
+            if (texto.isBlank()){
+                Toast.makeText(requireContext(), "Por favor complete el reporte.", Toast.LENGTH_LONG).show()
+            } else {
+                viewModel.agrergarReporte(Single.idComedor, texto)
+            }
+
         }
     }
 

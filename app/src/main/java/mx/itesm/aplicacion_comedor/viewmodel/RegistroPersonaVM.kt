@@ -3,17 +3,21 @@ package mx.itesm.aplicacion_comedor.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import mx.itesm.aplicacion_comedor.model.bd_global.Llamadas
 import mx.itesm.aplicacion_comedor.model.bd_global.Retro
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.Condiciones
-import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.idusuario
-import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.nuevoUsuario
-import mx.itesm.aplicacion_comedor.model.others.QR
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdUsuario
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.NuevoUsuario
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+
+/**
+ * Autor : Jose Antonio Moreno :)
+ * Clase que representa a la VIEW MODEL en la arquitectura MVVM
+ * Se encarga de controlar la interaccion entre la VISTA y el MODELO,
+ * sobretodo manda a llamar y maneja el resultado las funciones que llaman a al BD
+ * que agregan las personas nuevas.
+ */
 
 class RegistroPersonaVM : ViewModel() {
 
@@ -40,11 +44,11 @@ class RegistroPersonaVM : ViewModel() {
                            curp : String, sexo : String,
                            fecha : String){
 
-        val usuario = nuevoUsuario(nombre, apellido, curp, sexo, fecha)
+        val usuario = NuevoUsuario(nombre, apellido, curp, sexo, fecha)
         val call = descargaAPI.agregarUsuario(usuario)
 
-        call.enqueue(object: Callback<idusuario>{
-            override fun onResponse(call: Call<idusuario>, response: Response<idusuario>) {
+        call.enqueue(object: Callback<IdUsuario>{
+            override fun onResponse(call: Call<IdUsuario>, response: Response<IdUsuario>) {
                 if(response.isSuccessful){
                     id.value = response.body()?.idusuario
                 }else{
@@ -53,7 +57,7 @@ class RegistroPersonaVM : ViewModel() {
                     error.value = "Error AL conectar con el servidor" + response.message() + ": " + response.code()
                 }
             }
-            override fun onFailure(call: Call<idusuario>, t: Throwable) {
+            override fun onFailure(call: Call<IdUsuario>, t: Throwable) {
                 error.value = "Error al conectar con el servidor"
             }
         })

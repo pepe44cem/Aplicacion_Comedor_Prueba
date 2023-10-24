@@ -10,6 +10,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * Autor : Jose Antonio Moreno :)
+ * Clase que representa a la VIEW MODEL en la arquitectura MVVM
+ * Se encarga de controlar la interaccion entre la VISTA y el MODELO,
+ * sobretodo manda a llamar y maneja el resultado las funciones que llaman a al BD
+ * que agregan los reportes.
+ */
+
 class ReportesVM : ViewModel() {
     val descargaAPI = Retro().createRetrofit()
 

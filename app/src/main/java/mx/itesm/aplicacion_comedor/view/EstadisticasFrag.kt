@@ -13,6 +13,11 @@ import mx.itesm.aplicacion_comedor.viewmodel.EstadisticasVM
 import mx.itesm.aplicacion_comedor.R
 import mx.itesm.aplicacion_comedor.viewmodel.FragmentAdapterEstadisticas
 
+/**
+ * Autor : Jose Alonso Segura
+ * Se encarga de controlar a ComentariosFrag, DatosHoyFrag y a GraficasFrag
+ */
+
 class EstadisticasFrag : Fragment() {
 
     companion object {

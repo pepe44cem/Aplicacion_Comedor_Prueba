@@ -18,6 +18,14 @@ import mx.itesm.aplicacion_comedor.model.others.Comentario
 import mx.itesm.aplicacion_comedor.viewmodel.AdaptadorComentario
 import java.util.Calendar
 
+/**
+ * Autor : Jose Alonso Segura
+ * Clase que representa a la VISTA en la arquitectura MVVM
+ * Se encarga de controlar los elementos de la vista,
+ * ademas de llamar a las funciones que se necesiten para la logica
+ * en la sección de mostrar comentarios de la aplicación.
+ */
+
 class ComentariosFrag : Fragment() {
 
     companion object {

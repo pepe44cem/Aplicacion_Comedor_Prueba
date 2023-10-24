@@ -1,21 +1,24 @@
 package mx.itesm.aplicacion_comedor.view
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import mx.itesm.aplicacion_comedor.databinding.FragmentLogInBinding
 import mx.itesm.aplicacion_comedor.model.others.Single
 import mx.itesm.aplicacion_comedor.viewmodel.LogInVM
+
+/**
+ * Autor : Jose Antonio Moreno Tahuilan
+ * Clase que representa a la VISTA en la arquitectura MVVM
+ * Se encarga de controlar los elementos de la vista,
+ * ademas de llamar a las funciones que se necesiten para la logica en el Log In de la aplicacion.
+ */
 
 class LogInFrag : Fragment() {
 
@@ -43,34 +46,37 @@ class LogInFrag : Fragment() {
         viewModel.error.observe(viewLifecycleOwner, Observer { error ->
             Toast.makeText(requireContext(), error, Toast.LENGTH_LONG)
         })
-        viewModel.id.observe(viewLifecycleOwner, Observer { id ->
-            Log.d("TAG", "ID-----: " + id.toString())
-            if(id != null){
-                Single.idComedor = id
 
-                /*val sharedPreferences = requireContext().getSharedPreferences("MiPreferencia", Context.MODE_PRIVATE)
-                val editor = sharedPreferences.edit()
-                editor.putInt("idComedor", id)
-                editor.apply()*/
-                /*val prefs = requireActivity().getSharedPreferences("datos", AppCompatActivity.MODE_PRIVATE)
-                prefs.edit().apply{
-                    putInt("idComedor", id)
-                    commit()
-                }*/
+        viewModel.id.observe(viewLifecycleOwner, Observer { id ->
+            if (id != null){
+                Single.idComedor = id
                 val accion = LogInFragDirections.actionLogInFragToMenuFrag()
                 findNavController().navigate(accion)
-            }else{
+            } else {
                 Toast.makeText(requireContext(), "Su usuario o contraseña estan mal por favor vuelva a intentar", Toast.LENGTH_LONG).show()
             }
         })
+
+        viewModel.error.observe(viewLifecycleOwner){error ->
+            Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
+        }
     }
     private fun registrarEventos() {
         binding.btnLogIn.setOnClickListener {
-            //Toast.makeText(requireContext(), "Si paso", Toast.LENGTH_LONG).show()
-            Log.d("TAG", "Si funciona esta cosa")
             val usuario = binding.etUsuario.text.toString()
             val contrasena = binding.etContrasena.text.toString()
-            viewModel.descargarServicios(usuario, contrasena)
+
+            if (usuario.isBlank() && contrasena.isBlank()){
+                binding.etUsuario.error = "No deje valores en blanco"
+                binding.etContrasena.error = "No deje valores en blanco."
+            } else if (usuario.isBlank()) {
+                binding.etUsuario.error = "No deje valores en blanco"
+            } else if (contrasena.isBlank()){
+                binding.etContrasena.error = "No deje valores en blanco."
+            } else {
+                viewModel.descargarServicios(usuario, contrasena) //Verifica el usuario y la contraseña.
+            }
+
         }
     }
 }

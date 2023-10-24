@@ -50,7 +50,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -62,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:backgroundTint="@color/btn1"
+                    android:backgroundTint="@color/bt1"
                     android:text="Registrar comida" />
 
                 <ImageView
@@ -70,8 +73,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_weight="3"
-                    android:src="@drawable/logo"
-                    app:srcCompat="@drawable/logo" />
+                    android:src="@drawable/pollo"
+                    app:srcCompat="@drawable/pollo" />
             </LinearLayout>
 
             <LinearLayout
@@ -84,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:backgroundTint="@color/btn3"
+                    android:backgroundTint="@color/bt2"
                     android:text="Reporte"
                     app:cornerRadius="1000dp" />
 
@@ -93,8 +96,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_weight="2"
-                    android:src="@drawable/logo"
-                    app:srcCompat="@drawable/logo" />
+                    android:src="@drawable/lista"
+                    app:srcCompat="@drawable/lista" />
             </LinearLayout>
 
             <LinearLayout
@@ -107,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:backgroundTint="@color/btn4"
+                    android:backgroundTint="@color/bt3"
                     android:text="Registrar  voluntario" />
 
                 <ImageView
@@ -115,8 +118,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_weight="5"
-                    android:src="@drawable/logo"
-                    app:srcCompat="@drawable/logo" />
+                    android:src="@drawable/voluntario"
+                    app:srcCompat="@drawable/voluntario" />
             </LinearLayout>
 
             <LinearLayout
@@ -129,7 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:backgroundTint="@color/design_default_color_secondary"
+                    android:backgroundTint="@color/bt4"
                     android:text="Estadisticas" />
 
                 <ImageView
@@ -137,8 +140,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_weight="2.5"
-                    android:src="@drawable/logo"
-                    app:srcCompat="@drawable/logo" />
+                    android:src="@drawable/estadistica"
+                    app:srcCompat="@drawable/estadistica" />
             </LinearLayout>
         </LinearLayout>
 

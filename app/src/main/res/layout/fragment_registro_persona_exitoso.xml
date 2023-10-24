@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradiente_fondo"
     tools:context=".view.RegistroPersonaExitosoFrag">
 
     <TextView
@@ -13,7 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Registro Exitoso"
-        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,12 +34,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <LinearLayout
-        android:layout_width="301dp"
-        android:layout_height="367dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="2dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/white_btn_background"
         android:orientation="vertical"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgQR">
@@ -77,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/blue"
                 android:text="SMS" />
 
             <Button
@@ -85,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/blue"
                 android:text="Correo" />
 
         </LinearLayout>
@@ -100,18 +107,22 @@
 
         <Button
             android:id="@+id/btnRegresar"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="0dp"
             android:layout_weight="1"
+            android:backgroundTint="@color/blue"
             android:text="Regresar" />
 
         <Button
             android:id="@+id/btnComida"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="0dp"
             android:layout_weight="1"
+            android:backgroundTint="@color/blue"
             android:text="Registrar comida" />
 
     </LinearLayout>

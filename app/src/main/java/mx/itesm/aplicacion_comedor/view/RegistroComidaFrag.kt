@@ -1,11 +1,9 @@
 package mx.itesm.aplicacion_comedor.view
 
 import android.app.AlertDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.renderscript.ScriptGroup.Input
 import android.text.InputType
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,30 +12,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.google.zxing.integration.android.IntentIntegrator
 import mx.itesm.aplicacion_comedor.databinding.FragmentRegistroComidaBinding
 import mx.itesm.aplicacion_comedor.viewmodel.RegistroComidaVM
 import androidx.navigation.fragment.findNavController
+import mx.itesm.aplicacion_comedor.model.others.Validacion
 import mx.itesm.aplicacion_comedor.model.others.Single
 
+/**
+ * Autor : Jose Antonio Moreno Tahuilan
+ * Clase que representa a la VISTA en la arquitectura MVVM
+ * Se encarga de controlar los elementos de la vista,
+ * ademas de recuperar los datos para posteriormente poder registrar a una nueva persona.
+ */
 
 class RegistroComidaFrag : Fragment() {
 
     private val viewModel: RegistroComidaVM by viewModels()
     private lateinit var binding: FragmentRegistroComidaBinding
-
-
-    /*val sharedPreferences = requireContext().getSharedPreferences("Datos", Context.MODE_PRIVATE)
-    val idComedor = sharedPreferences.getInt("idComedor", 0)*/
-
-    /*val prefs = activity?.getSharedPreferences("datos", AppCompatActivity.MODE_PRIVATE)
-    val idComedor = prefs?.getInt("idComedor", 0)*/
-
-
-
+    private val valid = Validacion()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentRegistroComidaBinding.inflate(layoutInflater)
         registrarObservadores()
@@ -45,7 +40,6 @@ class RegistroComidaFrag : Fragment() {
         Log.d("TAG", "ID COMEDORRRR: " + Single.idComedor)
         return binding.root
     }
-
     private fun registrarEventos() {
         binding.btnNuevaPersona.setOnClickListener {
             val acc = RegistroComidaFragDirections.actionRegistroComidaFragToRegistroPersonaFrag()
@@ -65,7 +59,6 @@ class RegistroComidaFrag : Fragment() {
             findNavController().navigate(accion)
         }
     }
-
     private fun lanzarPopUpCodigo() {
         val miDialog = AlertDialog.Builder(requireActivity())
         val etCodigo= EditText(requireActivity())
@@ -75,19 +68,17 @@ class RegistroComidaFrag : Fragment() {
 
         miDialog.setPositiveButton("Listo", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
             val texto = etCodigo.text.toString()
-            //Toast.makeText(requireActivity(), "El resultado es: $texto", Toast.LENGTH_LONG).show()
-            viewModel.agregarConCodigo(texto.toInt(), Single.idComedor)
-
-            /*if (idComedor != null) {
-                viewModel.agregarConCodigo(texto.toInt(), idComedor)
-            }*/
+            if (texto.isBlank()) {
+                Toast.makeText(requireContext(), "Porfavor llene los datos.", Toast.LENGTH_LONG).show()
+            } else {
+                viewModel.agregarConCodigo(texto.toInt(), Single.idComedor)
+            }
         })
         miDialog.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
             dialogInterface.cancel()
         })
         miDialog.show()
     }
-
     private fun lanzarPopUpCurp() {
         val miDialog = AlertDialog.Builder(requireActivity())
         val etCURP = EditText(requireActivity())
@@ -98,12 +89,13 @@ class RegistroComidaFrag : Fragment() {
 
         miDialog.setPositiveButton("Listo", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
             val texto = etCURP.text.toString()
-            Log.d("TAG", i.toString())
-            //Toast.makeText(requireActivity(), "El resultado es: $texto", Toast.LENGTH_LONG).show()
-            viewModel.agregarConCURP(texto, Single.idComedor)
-            /*if (idComedor != null) {
-                viewModel.agregarConCURP(texto, idComedor)
-            }*/
+            if (texto.isBlank()) {
+                Toast.makeText(requireContext(), "Porfavor llene los datos.", Toast.LENGTH_LONG).show()
+            } else if (!valid.esCURPValida(texto)) {
+                Toast.makeText(requireContext(), "No es una CURP valida, por favor intente nuevamente.", Toast.LENGTH_LONG).show()
+            } else {
+                viewModel.agregarConCURP(texto, Single.idComedor)
+            }
         })
         miDialog.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
             dialogInterface.cancel()

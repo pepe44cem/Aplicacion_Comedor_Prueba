@@ -20,6 +20,14 @@ import mx.itesm.aplicacion_comedor.databinding.FragmentRegistroComidaExitosoBind
 import mx.itesm.aplicacion_comedor.model.others.Single
 import mx.itesm.aplicacion_comedor.viewmodel.RegistroComidaExitosoVM
 
+/**
+ * Autor : Jose Antonio Moreno Tahuilan
+ * Clase que representa a la VISTA en la arquitectura MVVM
+ * Se encarga de controlar los elementos de la vista,
+ * ademas de llamar a las funciones que se necesiten para la logica
+ * para cuando se registra de manera correcta una persona.
+ */
+
 class RegistroComidaExitosoFrag : Fragment() {
 
     private val viewModel: RegistroComidaExitosoVM by viewModels()

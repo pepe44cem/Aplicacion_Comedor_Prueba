@@ -3,17 +3,21 @@ package mx.itesm.aplicacion_comedor.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.zxing.integration.android.IntentIntegrator
-import mx.itesm.aplicacion_comedor.model.bd_global.Llamadas
 import mx.itesm.aplicacion_comedor.model.bd_global.Retro
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.IdVisita
 import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.NuevaComidaCURP
-import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.nuevaComidaCodigo
+import mx.itesm.aplicacion_comedor.model.bd_global.dataclass.NuevaComidaCodigo
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+
+/**
+ * Autor : Jose Antonio Moreno :)
+ * Clase que representa a la VIEW MODEL en la arquitectura MVVM
+ * Se encarga de controlar la interaccion entre la VISTA y el MODELO,
+ * sobretodo manda a llamar y maneja el resultado las funciones que llaman a al BD
+ * que registran las comidas por los diferentes metodos.
+ */
 
 class RegistroComidaVM : ViewModel() {
 
@@ -22,7 +26,7 @@ class RegistroComidaVM : ViewModel() {
     val error = MutableLiveData<String>()
     fun agregarConCodigo(codigo : Int, comedor : Int){
         Log.d("TAG", "SI ENTRO")
-        val nuevaComidaCodigo = nuevaComidaCodigo(codigo, comedor)
+        val nuevaComidaCodigo = NuevaComidaCodigo(codigo, comedor)
         val call = descargaAPI.agregarComidaCodigo(nuevaComidaCodigo)
 
         call.enqueue(object : Callback<IdVisita>{
